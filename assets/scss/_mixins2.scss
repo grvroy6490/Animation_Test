@@ -1,0 +1,104 @@
+
+
+@mixin display_flex(){
+    display: -webkit-flex ;
+    display: -moz-flex ;
+    display: -ms-flex ;
+    display: flex ;
+    -webkit-align-items: center ;
+    -moz-align-items: center ;
+    -ms-align-items: center ;
+    align-items: center ;
+}
+
+
+
+@mixin flex_notAlign(){
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;    
+}
+
+@mixin transformScale($args) {
+    -webkit-transform: scale($args);
+    -moz-transform: scale($args);
+    -ms-transform: scale($args);
+    transform: scale($args);
+}
+
+
+@mixin transformRotate($args) {
+    -webkit-transform: rotate($args);
+    -moz-transform: rotate($args);
+    -ms-transform: rotate($args);
+    transform: rotate($args)
+}
+
+
+@mixin transformTranslate($argX, $argsY) {
+    -webkit-transform: translate($argX, $argsY);
+    -moz-transform: translate($argX, $argsY);
+    -ms-transform: translate($argX, $argsY);
+    transform: translate($argX, $argsY)
+}
+
+@mixin transition($param){
+    -webkit-transition: all $param ease-in-out;
+    -moz-transition: all $param ease-in-out;
+    -ms-transition: all $param ease-in-out !important;
+    -o-transition: all $param ease-in-out;
+    transition: all $param ease-in-out;
+} 
+
+@mixin elem_width($min, $max) {
+    width: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (3000 - 300)));
+}
+
+@mixin elem_height($min, $max) {
+    height: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (3000 - 300)));
+}
+
+@mixin elem_font($min, $max) {
+    font-size: calc(#{$min}px + (#{$max} - #{$min}) * ((100vw - 300px) / (3000 - 300))) ;
+}
+
+
+@mixin mqMax($arg){
+    @media screen and (max-width: $arg){
+        @content;
+    }
+}
+
+ 
+@mixin mqMin($arg){
+    @media screen and (min-width: $arg){
+        @content;
+    }
+}
+
+
+@mixin mqIE(){    
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        @content;
+    }
+}
+
+
+
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: ($height / $width) * 100%;
+    }
+    > .content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+}
